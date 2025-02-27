@@ -5,7 +5,7 @@ A framework for integrating with BlueStacks istances under Windows for fast FPS 
 This aims to be a Python library that seamlessly integrates with a running BlueStacks Android emulator, providing real-time screen capture and interactive control. The library will capture video frames at near native device resolution (and frame rate) without heavy recording overhead, feed them into user-defined processing callbacks, and allow simulated input (taps, swipes, etc.) via ADB with randomness to avoid detection. The design will be modular for easy customization and future extension.
 
 ## Limitations
-For now, only Windows OS is supported. 
+For now, only Windows OS is supported. Also, Python 3.11+ is not supported yet.
 
 Using Android Debug Bridge (ADB) to capture screenshots in a loop is straightforward and preserves the device’s full native resolution. However, ADB-based capture has a performance ceiling of around 150 ms per frame on BlueStacks (approximately 6–7 FPS). Some optimizations, like compressing the output (e.g. using `adb exec-out "screencap | gzip -1"`) can improve throughput by reducing data size, but ADB will not easily achieve high framerates due to bandwidth limits.
 
@@ -17,6 +17,16 @@ Three interfaces will be provided for processing video frames:
 - **MediaProjection**: An Android API that allows apps to capture the device screen at high framerates. MediaProjection is a good choice for high-speed video processing, but it requires an app to be installed on the device.
 
 ### Scrcpy
+
+#### Development setup
+
+##### Install FFmpeg Development Libraries
+Since PyAV relies on FFmpeg, install the necessary headers and shared libraries:
+- Download the latest FFmpeg release from https://github.com/BtbN/FFmpeg-Builds/releases (e.g. `ffmpeg-master-latest-win64-lgpl-shared.zip`).
+- Extract the archive to a folder (e.g. `C:\ffmpeg`).
+- Add the bin folder to your PATH (e.g. `setx PATH "%PATH%;C:\ffmpeg\bin"`).
+- Restart your command prompt to apply the PATH changes.
+- Verify FFmpeg is accessible by running `ffmpeg -version`.
 
 #### Setup
 
