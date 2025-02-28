@@ -4,7 +4,7 @@ import threading
 import cv2
 import numpy as np
 
-from BlueStacksAgent import BlueStacksAgent
+from BlueStacksAgent import Agent
 from BlueStacksAgent.actuators.base import BaseActuator
 from BlueStacksAgent.agents import ScrcpyAgent
 
@@ -54,7 +54,7 @@ def display_loop():
 # (Ensure the adb device is set up correctly)
 scrcpy_agent = ScrcpyAgent(adb_serial=5556)
 simple_actuator = SimpleActuator(frame_queue)
-bluestacks_agent = BlueStacksAgent(stream_agent=scrcpy_agent, actuator=simple_actuator)
+bluestacks_agent = Agent(stream_agent=scrcpy_agent, actuator=simple_actuator)
 
 # Start the agent in a background thread
 agent_thread = threading.Thread(target=bluestacks_agent.start)
