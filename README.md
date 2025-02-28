@@ -35,6 +35,7 @@ Since PyAV relies on FFmpeg, install the necessary headers and shared libraries:
 3. **Optimize Scrcpy Settings**: You can adjust scrcpy parameters to balance quality and performance. For example, limit resolution (--max-size 1280) or bitrate (--bit-rate 4M) to reduce bandwidth, or set max FPS (--max-fps 30) to stabilize frame rate. By default scrcpy uses the device’s full resolution and an 8 Mbps H.264 stream, which offers low latency and high FPS in most cases. 
 H.264 is recommended over H.265 for lower latency
 4. **Test Scrcpy Mirror**: Run scrcpy from a command prompt to ensure it can mirror the BlueStacks screen in a window. This also confirms ADB connectivity and that the scrcpy server can run on the Android side.
+5. **Run Scrcpy**:  
 
 #### Optimization strategies
 - **Use Hardware Encoding**: Scrcpy by default leverages the Android device’s hardware H.264 encoder, which is efficient. This keeps CPU usage low and latency small on the device side. Ensure H.264 is used (the default) as it provides lower latency than H.265. Tune Bitrate and Resolution: For BlueStacks, you can experiment with scrcpy options. A higher bitrate (e.g. 16M) can improve quality at the cost of slightly more bandwidth. Reducing resolution (--max-size) can lower latency if the encoding or decoding becomes a bottleneck at full HD. There’s a trade-off: lower resolution means less data per frame (faster to encode/transmit) but also less detail. Choose the lowest resolution that still meets your accuracy needs.

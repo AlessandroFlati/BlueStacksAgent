@@ -1,14 +1,18 @@
 import abc
 
+import numpy as np
+
+
 class BaseActuator(abc.ABC):
     """
-    Semi-abstract class for actuators that work with BlueStacksAgent.
-    The on_frame method must be implemented by any subclass to process frames.
+    Abstract class for actuators that work with BlueStacksAgent.
+    The process method must be implemented by any subclass to process frames.
     """
 
     @abc.abstractmethod
-    def on_frame(self, frame):
+    def process(self, frames: np.ndarray):
         """
         Callback function to process a captured frame.
-        :param frame: The captured frame (e.g., a NumPy array).
+        :param frames: The buffer of captured frames (i.e., a 3D NumPy array, where the first dimension
+                       represents the frame index, and the remaining dimensions represent the frame data).
         """

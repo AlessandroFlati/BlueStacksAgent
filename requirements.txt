@@ -1,3 +1,7 @@
 scrcpy-client~=0.4.1
 setuptools~=75.1.0
 pytest~=8.3.4
+numpy~=2.2.3
+adbutils~=1.2.15
+BlueStacksAgent~=0.1.0
+opencv-python~=4.11.0.86

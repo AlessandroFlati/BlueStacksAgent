@@ -4,7 +4,7 @@ setup(
     name="BlueStacksAgent",
     version="0.1.0",
     description="A Python library for real-time interaction with BlueStacks using scrcpy, minicap, and MediaProjection.",
-    long_description=open("README.md").read(),
+    long_description=open("README.md", encoding="utf8").read(),
     long_description_content_type="text/markdown",
     author="Alessandro Flati",
     author_email="alessandro.flati@gmail.com",
