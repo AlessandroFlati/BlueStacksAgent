@@ -132,28 +132,28 @@ class AntiDetectionModifier:
 class AntiDetectionAdbActuator(BaseActuator, abc.ABC):
     def __init__(self, adb_device: AdbDevice):
         super().__init__()
-        self.adb_actuator = AdbActuator(adb_device)
+        self.adb_device: AdbDevice = adb_device
 
     def tap(self, x, y, width, height):
         x, y = AntiDetectionModifier.tap(x, y, width, height)
-        self.adb_actuator.tap(x, y)
+        self.adb_device.shell(f"input tap {x} {y}")
 
     def swipe(self, x1, y1, x2, y2, width1, height1, width2, height2, duration):
         x1, y1, x2, y2 = AntiDetectionModifier.swipe(x1, y1, x2, y2, width1, height1, width2, height2)
-        self.adb_actuator.swipe(x1, y1, x2, y2, duration)
+        self.adb_device.shell(f"input swipe {x1} {y1} {x2} {y2} {duration}")
 
     def keyevent(self, key):
         key = AntiDetectionModifier.keyevent(key)
-        self.adb_actuator.keyevent(key)
+        self.adb_device.shell(f"input keyevent {key}")
 
     def text(self, text):
         text = AntiDetectionModifier.text(text)
-        self.adb_actuator.text(text)
+        self.adb_device.shell(f"input text {text}")
 
     def press(self, key):
         key = AntiDetectionModifier.press(key)
-        self.adb_actuator.press(key)
+        self.adb_device.shell(f"input press {key}")
 
     def longpress(self, key):
         key = AntiDetectionModifier.longpress(key)
-        self.adb_actuator.longpress(key)
+        self.adb_device.shell(f"input longpress {key}")
