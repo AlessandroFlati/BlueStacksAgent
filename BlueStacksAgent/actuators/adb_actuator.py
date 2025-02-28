@@ -7,10 +7,9 @@ from BlueStacksAgent import BaseActuator
 
 
 class AdbActuator(BaseActuator, abc.ABC):
-    def __init__(self, adb_device: AdbDevice, adb_serial: str):
+    def __init__(self, adb_device: AdbDevice):
         super().__init__()
         self.adb_device: AdbDevice = adb_device
-        self.adb_serial: str = adb_serial
 
     def tap(self, x, y):
         self.adb_device.shell(f"input tap {x} {y}")
@@ -131,9 +130,9 @@ class AntiDetectionModifier:
 
 
 class AntiDetectionAdbActuator(BaseActuator, abc.ABC):
-    def __init__(self, adb_device: AdbDevice, adb_serial: str):
+    def __init__(self, adb_device: AdbDevice):
         super().__init__()
-        self.adb_actuator = AdbActuator(adb_device, adb_serial)
+        self.adb_actuator = AdbActuator(adb_device)
 
     def tap(self, x, y, width, height):
         x, y = AntiDetectionModifier.tap(x, y, width, height)

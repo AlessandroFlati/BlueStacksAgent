@@ -8,7 +8,7 @@ from BlueStacksAgent.actuators.base import BaseActuator
 from BlueStacksAgent.agents.base import BaseAgent
 
 
-class BlueStacksAgent:
+class Agent:
     """
     BlueStacksAgent ties together a screen capture agent (e.g., scrcpy, minicap, or mediaprojection)
     and an actuator that processes captured frames.
