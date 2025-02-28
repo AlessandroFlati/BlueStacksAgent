@@ -1,6 +1,7 @@
 import threading
 import time
 from .base import BaseAgent
+# noinspection PyPackageRequirements
 from scrcpy import Client
 
 class ScrcpyAgent(BaseAgent):

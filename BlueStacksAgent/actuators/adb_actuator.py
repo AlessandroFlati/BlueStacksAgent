@@ -3,7 +3,7 @@ import abc
 import numpy as np
 from adbutils import AdbDevice
 
-from BlueStacksAgent import BaseActuator
+from .base import BaseActuator
 
 
 class AdbActuator(BaseActuator, abc.ABC):
