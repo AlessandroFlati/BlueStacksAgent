@@ -11,12 +11,12 @@ class ScrcpyAgent(BaseAgent):
 
     def __init__(self,
                  adb_path: str = "adb",
-                 adb_serial: int = 5555,
+                 adb_port: int = 5555,
                  resolution: tuple[int, int] = None,
                  bitrate: int = 8000000,
                  max_fps: int = 30,
                  queue_size: int = 3):
-        super().__init__(adb_path, adb_serial, resolution, bitrate, max_fps, queue_size)
+        super().__init__(adb_path, adb_port, resolution, bitrate, max_fps, queue_size)
         self.client = None
         self.thread = None
 

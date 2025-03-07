@@ -1,4 +1,5 @@
 import abc
+import adbutils
 import os
 from collections import deque
 from typing import Tuple
@@ -53,7 +54,7 @@ class BaseAgent(abc.ABC):
 
         # Connect to ADB
         self._connect_adb()
-        self.adb_device: AdbDevice = adb.device(serial=f"emulator-{self.adb_port}")
+        self.adb_device: AdbDevice = adb.device(serial=f"localhost:{self.adb_port}")
 
         self._is_streaming = False
 
@@ -131,6 +132,7 @@ class BaseAgent(abc.ABC):
         # Check if ADB is installed
         if not self._is_adb_installed():
             raise FileNotFoundError("ADB not found. Please install ADB and add it to the system PATH.")
+        adbutils.adb.connect(f'localhost:{self.adb_port}')
 
     def _is_adb_installed(self):
         """

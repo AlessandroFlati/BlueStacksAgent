@@ -52,7 +52,7 @@ def display_loop():
 
 # Create and configure the BlueStacksAgent
 # (Ensure the adb device is set up correctly)
-scrcpy_agent = ScrcpyAgent(adb_serial=5556)
+scrcpy_agent = ScrcpyAgent(adb_port=5556)
 simple_actuator = SimpleActuator(frame_queue)
 bluestacks_agent = Agent(stream_agent=scrcpy_agent, actuator=simple_actuator)
 
